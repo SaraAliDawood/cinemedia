@@ -9,7 +9,7 @@ function Layeout() {
   return (
     <> 
     <Navbar />
-    <div className="container mx-auto"><Outlet/></div>
+    <div className="container mx-auto -mt-16 "><Outlet/></div>
     <Footer/>
     </>
   )

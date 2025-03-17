@@ -1,84 +1,53 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { auth } from "../../firebase"; // Import Firebase auth
-import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [user, setUser] = useState(null); // Track user authentication state
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // Google Sign-In
-  const handleGoogleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      setUser(result.user); // Set the user state
-    } catch (error) {
-      console.error("Error signing in with Google:", error);
-    }
-  };
-
-  // Logout
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      setUser(null); // Clear the user state
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
-  };
-
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo on the left */}
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="text-xl font-bold text-gray-800">
+<div className="pt-6">
+<Link to="/" className="text-xl font-extrabold text-white">
               CINEMEDIA
             </Link>
+           <br/>
+            <p className="text-sm font-extralight text-center text-white">AGENCY</p>
+</div>
           </div>
+
 
           {/* Navigation links on the right (desktop) */}
           <div className="hidden md:flex space-x-4 items-center">
-            <Link to="/" className="text-gray-800 hover:text-blue-500">
-              Home
+            <Link to="/" className="text-white font-semibold hover:text-blue-500">
+              HOME
             </Link>
-            <Link to="/about" className="text-gray-800 hover:text-blue-500">
-              About
+            <Link to="services" className="text-white font-semibold hover:text-blue-500">
+              SERVICES
             </Link>
-            <Link to="/services" className="text-gray-800 hover:text-blue-500">
-              Services
+            <Link to="about" className="text-white font-semibold hover:text-blue-500">
+              CLIENTS
             </Link>
-            <Link to="/contact" className="text-gray-800 hover:text-blue-500">
-              Contact
+            <Link to="contact" className="text-white  font-semibold hover:text-blue-500">
+              CONTACT US
             </Link>
-            {user ? (
-              <button
-                onClick={handleLogout}
-                className="text-gray-800 hover:text-blue-500"
-              >
-                Logout
-              </button>
-            ) : (
-              <button
-                onClick={handleGoogleSignIn}
-                className="text-gray-800 hover:text-blue-500"
-              >
-                Login with Google
-              </button>
-            )}
+            <Link to="ourwork" className="text-white font-semibold hover:text-blue-500">
+              OUR WORK
+            </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="text-gray-800 hover:text-blue-500 focus:outline-none"
+              className="text-white hover:text-blue-500 focus:outline-none"
             >
               <svg
                 className="h-6 w-6"
@@ -101,49 +70,18 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link
-                to="/"
-                className="block text-gray-800 hover:text-blue-500"
-                onClick={toggleMobileMenu}
-              >
+              <Link to="/" className="block text-white hover:text-blue-500">
                 Home
               </Link>
-              <Link
-                to="/about"
-                className="block text-gray-800 hover:text-blue-500"
-                onClick={toggleMobileMenu}
-              >
+              <Link to="about" className="block text-white hover:text-blue-500">
                 About
               </Link>
-              <Link
-                to="/services"
-                className="block text-gray-800 hover:text-blue-500"
-                onClick={toggleMobileMenu}
-              >
+              <Link to="services" className="block text-white hover:text-blue-500">
                 Services
               </Link>
-              <Link
-                to="/contact"
-                className="block text-gray-800 hover:text-blue-500"
-                onClick={toggleMobileMenu}
-              >
+              <Link to="contact" className="block text-white hover:text-blue-500">
                 Contact
               </Link>
-              {user ? (
-                <button
-                  onClick={handleLogout}
-                  className="block text-gray-800 hover:text-blue-500"
-                >
-                  Logout
-                </button>
-              ) : (
-                <button
-                  onClick={handleGoogleSignIn}
-                  className="block text-gray-800 hover:text-blue-500"
-                >
-                  Login with Google
-                </button>
-              )}
             </div>
           </div>
         )}

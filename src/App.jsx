@@ -8,6 +8,7 @@ import About from './Components/About/about.jsx'
 import Notfound from './Components/Notfound/Notfound.jsx'
 import Services from './Components/Services/Services.jsx'
 import Contact from './Components/Contact/Contact.jsx'
+import OurWork from './Components/OurWork/OurWork.jsx'
 
 let x = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ let x = createBrowserRouter([
         {
           path:"contact",
           element:<Contact/>
+        },
+        {
+          path:"ourwork",
+          element:<OurWork/>
         }
 
 
