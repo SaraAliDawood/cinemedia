@@ -1,10 +1,11 @@
-import React from 'react'
-import style from "./Footer.module.css"
+import React from 'react';
 
 function Footer() {
   return (
-    <div className="fixed bottom-0 left-0 text-center bg-slate-950 text-white w-full right-0">Footer</div>
-  )
+    <footer className="bg-gray-950  text-white text-center py-5">
+      <p>© 2023 Cinemedia Agency. All rights reserved.</p>
+    </footer>
+  );
 }
 
 export default Footer;
